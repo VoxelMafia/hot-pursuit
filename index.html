@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hot Pursuit — Open World</title>
+  <style>#run-arrest{opacity:.7}#o-hud{pointer-events:none;text-shadow:0 2px 6px #000000bf;font-variant-numeric:tabular-nums;position:fixed;bottom:16px;left:20px}#o-speed{text-align:right;letter-spacing:-1px;text-shadow:0 0 14px #19e6ff73,0 2px 6px #000c;min-width:2.05em;font-size:52px;font-style:italic;font-weight:900;line-height:1;display:inline-block}#o-unit{letter-spacing:2px;opacity:.85;margin:0 12px 0 6px;font-size:12px;font-style:italic;font-weight:800}#o-bars{width:196px;margin:5px 0 7px;transform:skew(-18deg)}#o-bars div{background:#060a148c;border-radius:1px;position:relative;overflow:hidden}#o-bars i{transform-origin:0;will-change:transform;display:block;position:absolute;inset:0;transform:scaleX(0)}#o-bar-speed{height:5px;margin-bottom:3px}#o-bar-speed i{background:linear-gradient(90deg,#19e6ff,#f7c600 70%,#ff3044)}#o-bar-jet{height:3px}#o-bar-jet i{background:#7fc4ff;box-shadow:0 0 6px #7fc4ff}#o-biome{letter-spacing:3px;opacity:.9;font-size:12px;font-weight:800}#o-seed{letter-spacing:2px;opacity:.45;font-size:10px;font-weight:700}#o-dmg-box{opacity:0;background:#060a1499;border-radius:3px;width:176px;height:13px;margin-top:5px;transition:opacity .2s;position:relative;overflow:hidden}#o-dmg-box.on{opacity:1}#o-dmg{transform-origin:0;background:linear-gradient(90deg,#ffb13a,#ff3044);position:absolute;inset:0;transform:scaleX(0)}#o-dmg-box span{text-align:center;letter-spacing:3px;font-size:9px;font-weight:800;line-height:13px;position:absolute;inset:0}#o-back{text-align:center;letter-spacing:1px;text-shadow:0 2px 6px #000c;pointer-events:none;width:190px;font-size:13px;font-weight:800;position:fixed;bottom:216px;right:18px}#o-goal{text-align:center;pointer-events:none;letter-spacing:2px;color:#35f08a;text-shadow:0 2px 6px #000000d9;font-variant-numeric:tabular-nums;font-size:15px;font-weight:800;position:fixed;top:14px;left:50%;transform:translate(-50%)}#o-goal i{vertical-align:-3px;will-change:transform;margin-right:8px;font-size:24px;font-style:normal;line-height:1;display:inline-block}#o-goal small{letter-spacing:2px;color:#fff;opacity:.75;font-size:10px;display:block}#o-loading{z-index:40;color:#fff;text-align:center;background:linear-gradient(160deg,#04082ab8 0%,#120a4a94 42%,#3a107894 74%,#0a1650b8 100%);flex-direction:column;justify-content:center;align-items:center;gap:18px;display:flex;position:fixed;inset:0;overflow:hidden}#o-loading.hidden{display:none}body:has(#o-loading:not(.hidden)) :is(#o-hud,#run,#o-back,#o-goal){visibility:hidden}#o-loading:before,#o-loading:after{content:"";pointer-events:none;animation:3.6s ease-in-out infinite alternate o-police;position:absolute;inset:-20%}#o-loading:before{background:radial-gradient(circle at 20% 72%,#ff284680,#0000 52%)}#o-loading:after{background:radial-gradient(circle at 80% 72%,#286eff99,#0000 52%);animation-direction:alternate-reverse}@keyframes o-police{0%{opacity:.12}to{opacity:1}}#o-loading>*{z-index:1;position:relative}#o-title{letter-spacing:4px;background:linear-gradient(90deg,#ff5a78,#fff 50%,#6fb4ff);color:#0000;-webkit-background-clip:text;background-clip:text;margin:0;font-size:clamp(42px,8vw,88px);font-style:italic;font-weight:900;line-height:1}#o-load-msg{letter-spacing:5px;opacity:.9;font-size:18px;font-weight:700}#o-vr-slot{min-height:74px}#o-vr-slot button{letter-spacing:3px;color:#fff;cursor:pointer;background:linear-gradient(90deg,#e0264e,#5a2bd8 50%,#1f6cff);border:1px solid #ffffff8c;border-radius:40px;padding:18px 54px;font:800 24px Segoe UI,Roboto,Arial,sans-serif;box-shadow:0 0 34px #785affb3}#o-update{scrollbar-width:thin;letter-spacing:1px;opacity:.85;max-height:20vh;padding:0 24px;font-size:13px;line-height:1.5;position:absolute;bottom:22px;left:0;right:0;overflow-y:auto}#o-garage{z-index:30;cursor:pointer;width:min(900px,86vw);position:fixed;bottom:3vh;left:50%;transform:translate(-50%)}#o-update b{color:#8fd8ff;letter-spacing:2px}</style>
+  <script type="module" crossorigin src="./assets/index-CbSVe1Ix.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-B4Srh_KB.css">
+</head>
+<body>
+  <div id="app"></div>
+  <div id="o-hud">
+    <span id="o-speed">0</span><span id="o-unit">KM/H</span>
+    <div id="o-bars"><div id="o-bar-speed"><i></i></div><div id="o-bar-jet"><i></i></div></div>
+    <div id="o-biome"></div>
+    <div id="o-seed"></div>
+  </div>
+  <div id="run">
+    <span id="run-time">0:00</span><span id="run-dist">0.0 km</span><span id="run-lives"></span>
+    <div id="run-cash">$0</div>
+    <div id="o-drive" style="font-size:12px;font-weight:800;letter-spacing:2px;opacity:.9;color:#8fd8ff"></div>
+    <div id="o-ammo" class="hidden" style="font-size:12px;font-weight:800;letter-spacing:1px;opacity:.9"></div>
+    <div id="run-best"></div>
+    <div id="run-stars"></div>
+    <div id="run-arrest"><div id="run-arrest-fill"></div><span>ARREST</span></div>
+    <div id="o-dmg-box"><div id="o-dmg"></div><span>DAMAGE</span></div>
+  </div>
+  <div id="o-back"></div>
+  <div id="o-goal"><i>↑</i><span>STATION</span><small></small></div>
+  <canvas id="o-garage" class="hidden"></canvas>
+  <div id="popups"></div>
+  <div id="over" class="screen hidden">
+    <h2 id="over-title">BUSTED</h2>
+    <div id="over-stats">
+      <div>PLACE <b id="over-place"></b></div>
+      <div>TIME <b id="over-time"></b></div>
+      <div>DISTANCE <b id="over-dist"></b></div>
+      <div>EARNED <b id="over-money"></b></div>
+      <div>TAKEDOWNS <b id="over-take"></b></div>
+      <div>NEAR MISSES <b id="over-near"></b></div>
+      <div>BEST AIR <b id="over-air"></b></div>
+    </div>
+    <table id="over-board">
+      <thead><tr><th>#</th><th>TIME</th><th>DISTANCE</th></tr></thead>
+      <tbody id="over-table"></tbody>
+    </table>
+    <p class="hint">Enter / R / A / tap for the next run</p>
+  </div>
+  <div id="pause" class="screen hidden">
+    <h2>PAUSED</h2>
+    <p class="hint">P / Esc / Menu to resume</p>
+  </div>
+  <div id="o-loading">
+    <h1 id="o-title">HOT PURSUIT</h1>
+    <div id="o-load-msg">GENERATING LAND</div>
+    <div id="o-vr-slot"></div>
+    <div id="o-update"></div>
+  </div>
+</body>
+</html>
